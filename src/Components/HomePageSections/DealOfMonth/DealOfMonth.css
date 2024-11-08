@@ -1,0 +1,43 @@
+.deal-of-the-month-main-container{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px 20px 25px;
+    background-color: #FFFFFF;
+}
+
+.deal-of-the-month-inputs{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: start;
+    gap: 50px;
+}
+
+.select-date{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.select-date p{
+    margin: 0;
+    font-size: var(--font-12);
+    line-height: var(--line-height-18);
+    font-weight: var(--font-weight-18);
+    color: var(--text-color);
+}
+
+.select-date img{
+    width: auto;
+    height: 24px;
+    object-fit: contain;
+}

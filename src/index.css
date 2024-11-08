@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  /* All Application Standard Colors */
+  --primary-color: #4487C5;
+  --publish-btn-color: #4478C5;
+  --primary-color-opacity: rgba(68, 135, 197, 0.05); /* 5% opacity version */
+  --draft-copy-btn-color: rgba(68, 120, 197, 0.2); /* 20% opacity: version */
+  --secondry-text-color: #595959;
+  /* --text-color: #595959; */
+  --text-color: #988e8e;
+  --placeholder-color: #aca4a4;
+  --text-color-opacity: rgba(89, 89, 89, 0.6);  /* opacity to 60% */
+  --main-background-color: #F8F9FF;
+  --btn-background-color: #EAEAEA;
+  --tbl-header-color: #FDFDFD;
+  --btns-color: #50BED3;
+  --containers-color: #FFFFFF;
+  --tbl-text-color: #858585;
+  --out-of-stock-color: #FF8A80;
+  --in-stock-color: #8DF9A1;
+  --publish-bg-color: #8DF9A11A;
+  --stock-processing-color: #FFC750;
+  --drafted-bg-color: #FFC7501A;
+  --semi-background-color: #F0F0F0;
+  --attributebBtn-background: #50BED3;
+  --border-color: #F0F0F0;
+
+  /* All Application Standard Typography */
+  --font-family: 'Poppins', sans-serif;
+
+    /* Font Sizes */
+    --font-heading-size: 25px;
+    --font-size-extra-large: 20px;
+    --font-15: 15px;
+    --font-size-large: 13.5px;
+    --font-12: 12px;
+    --font-size-medium: 14px;
+    --font-size-avg: 11.5px;
+    --font-size-small: 12px;
+    --font-size-extra-small: 10px;
+
+  /* Font Weights */
+  --font-weight-semi-bold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+
+  /* Box Shadow */
+
+  --box-shadow-regular: 0px 1px 4px 0px #00000026;
+  --box-shadow-regular-1: 0px 1px 4px 0px #00000029;
+
+    /* line heights */
+    --line-height-30: 30px;
+    --line-height-28: 28px;
+    --line-height-22: 22px;
+    --line-height-18: 18px;
+
+  /* Spacing */
+  /* --font-size-large: 18px; */
+  /* --spacing-medium: 16px; */
+
+  /* DataTable Header Styles */
+.dataTable thead th {
+  height: 52px !important;
+  border-radius: 5px 5px 0px 0px !important;
+  background: #FDFDFD !important;
+  text-align: center !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  color: var(--text-color) !important;
+  border: none !important;
+  /* box-Shadow: '0px 1px 4px 0px #00000026', */
+  /* gap: '70px', */
+  /* opacity: '1', */
+
+ /* Text Editor Custom CSS */
+
+ --ck-border-radius: 5px !important;
+
+
+
+}
+
+/* DataTable Cells Styles */
+.dataTable tbody td {
+  height: 66px !important;
+  text-align: center !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F0F0F0 !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  color: #858585 !important;
+}
+
+/* Action Button Styling */
+.dataTable .action-btn {
+  cursor: pointer !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.sc-fAUdSK .sc-dntaoT .sc-dpBQxM .ELGCi .btufXN .NbHYZ .rdt_TableCol {
+  width: 5px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+}
+
+body {
+  margin: 0; /* Remove default body margin */
+  overflow: hidden; /* Prevent body from scrolling */
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.css-vtgxq7-control {
+  border-color: none !important;
+}
+
+.ck.ck-balloon-panel.ck-powered-by-balloon .ck.ck-powered-by .ck-powered-by__label {
+  color: var(--ck-powered-by-text-color);
+  cursor: pointer;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: -.2px;
+  line-height: normal;
+  margin-right: 4px;
+  padding-left: 2px;
+  text-transform: uppercase;
+  display: none;
+}

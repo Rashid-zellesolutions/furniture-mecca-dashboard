@@ -1,0 +1,21 @@
+.input-field-with-label{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+
+
+.input-field-with-label input{
+    width: auto;
+    background-color: #fff;
+    border: 1px solid #F0F0F0;
+    outline: none;
+    padding: 10px;
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+    line-height: 18px;
+    color: var(--secondry-text-color);
+}
+

@@ -1,0 +1,2439 @@
+-----------------------------------------------------------------------------------------------------
+Custome Static Handling of li-Elements:- (Sidebar.js) 20-9-2024
+-----------------------------------------------------------------------------------------------------
+
+import React from 'react';
+import './Sidebar.css';
+import { FaTachometerAlt, FaFileAlt, FaShoppingCart, FaMoneyBillWave, FaChartLine, FaBullhorn, FaUsers, FaCog, FaBlog, FaHistory, FaShieldAlt, FaFileInvoice } from 'react-icons/fa';
+import { RiArrowDropDownLine } from "react-icons/ri";
+
+function Sidebar() {
+  return (
+    <aside className="sidebar">
+      {/* Logo Section */}
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      {/* Navigation Section */}
+      <div className="navSection">
+        <nav>
+          <ul>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaTachometerAlt className="catIcon"/> 
+                <p className="catName">Dashboard</p>
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaFileAlt className="catIcon"/> 
+                <p className="catName">Pages</p>
+                </span>
+                <span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaShoppingCart className="catIcon"/> 
+                <p className="catName">E-Commerce</p>
+                </span>
+                <span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaMoneyBillWave className="catIcon"/> 
+                <p className="catName">Payments</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaChartLine className="catIcon"/> 
+                <p className="catName">Analytics</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+              
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaBullhorn className="catIcon"/> 
+                <p className="catName">Marketing</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaUsers className="catIcon"/> 
+                <p className="catName">Users</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaCog className="catIcon"/> 
+                <p className="catName">Settings</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaBlog className="catIcon"/> 
+                <p className="catName">Blogs</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaHistory className="catIcon"/> 
+                <p className="catName">History</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaShieldAlt className="catIcon"/> 
+                <p className="catName">Security</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+            <li>
+              <span className="navItem">
+                <span>
+                <FaFileInvoice className="catIcon"/> 
+                <p className="catName">Reports</p>
+                </span><span>
+                <RiArrowDropDownLine className="dropdownIcon" />
+                </span>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+//css
+  .catIcon {
+    margin-left: 5px; /* Reset margins to avoid any unexpected spacing */
+    font-size: 1.2rem; /* Adjust size if needed */
+    color: var(--text-color); /* Match the icon color with the sidebar */
+  }
+
+  /* Hover effect on li to change icon and text color */
+.navSection li:hover .catIcon,
+.navSection li:hover .catName {
+  color: var(--primary-color); /* Change color to blue on hover */
+}
+
+------------------------------------------------------------------------------------------------------------
+Dynamic Handling of li-Elements with Hover-Effect:- (Sidebar.js) 21-9-2024
+------------------------------------------------------------------------------------------------------------
+
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
+import './Sidebar.css';
+import { CgChevronDown } from "react-icons/cg";
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const navigate = useNavigate(); 
+  const categories = [
+    { name: 'Dashboard', path: '/', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Pages', path: '/Pages', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Payments', path: '/Payments', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Analytics', path: '/Analytics', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Marketing', path: '/Marketing', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Users', path: '/Users', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Settings', path: '/Settings', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Blogs', path: '/Blogs', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'History', path: '/History', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Security', path: '/Security', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+  ];
+
+  const handleClick = (name, path) => {
+    // Change the URL without navigating
+    navigate(path, { replace: false });
+    console.log(`${name} has been clicked.`);
+  };
+
+  return (
+    <aside className="sidebar">
+      {/* Logo Section */}
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      {/* Navigation Section */}
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <li key={index}>
+                <span
+                  className="navItem"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(category.name, category.path)}
+                >
+                  <span>
+                    <img
+                      src={hoveredIndex === index ? category.colorImage : category.grayImage}
+                      alt={category.name}
+                      className="catImage"
+                    />
+                    <p className="catName">{category.name}</p>
+                  </span>
+                 
+                    {category.name !== 'Dashboard' && <CgChevronDown className="dropdownIcon" />}
+                  
+                </span>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+------------------------------------------------------------------------------------------------------------
+Dynamic Handling of li-Elements with Active State Handling without Dropdown Items:- (Sidebar.js) 21-9-2024
+------------------------------------------------------------------------------------------------------------
+
+// Sidebar.js
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from "react-icons/cg";
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null); // State to track the selected item
+  const navigate = useNavigate();
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Pages', path: '/Pages', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Payments', path: '/Payments', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Analytics', path: '/Analytics', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Marketing', path: '/Marketing', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Users', path: '/Users', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Settings', path: '/Settings', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Blogs', path: '/Blogs', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'History', path: '/History', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Security', path: '/Security', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png' },
+  ];
+
+  const handleClick = (index, path) => {
+    setSelectedIndex(index); // Set the clicked item as selected
+    navigate(path, { replace: false });
+    console.log(`${categories[index].name} has been clicked.`);
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <li
+                key={index}
+                className={selectedIndex === index ? 'active' : ''} // Set the active class here
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => handleClick(index, category.path)}
+              >
+                <span
+                  className={`navItem ${selectedIndex === index ? 'active' : ''}`}
+                >
+                  <span>
+                    <img
+                      src={
+                        hoveredIndex === index || selectedIndex === index
+                          ? category.colorImage
+                          : category.grayImage
+                      }
+                      alt={category.name}
+                      className="catImage"
+                    />
+                    <p className="catName">{category.name}</p>
+                  </span>
+
+                  {category.name !== 'Dashboard' && (
+                    <CgChevronDown className="dropdownIcon" />
+                  )}
+                </span>
+              </li>
+            ))}
+
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+------------------------------------------------------------------------------------------------------------
+Dynamic Handling of li-Elements with Active State Handling with Dropdown Items E-Commerce:- (Sidebar.js) 23-9-2024
+------------------------------------------------------------------------------------------------------------
+
+// Sidebar.js
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChild, setSelectedChild] = useState(null); // State to manage selected child item
+  const [isECommerceOpen, setIsECommerceOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true },
+    { name: 'Payments', path: '/Payments', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Analytics', path: '/Analytics', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Marketing', path: '/Marketing', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Users', path: '/Users', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Settings', path: '/Settings', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Blogs', path: '/Blogs', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'History', path: '/History', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Security', path: '/Security', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+  ];
+
+  const eComAttributes = [
+    { name: 'All Products', path: '/E-Commerce/All-Products' },
+    { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+    { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+    { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+    { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+  ];
+
+  const handleClick = (index, path, isDropdown) => {
+    if (isDropdown && path === '/E-Commerce') {
+      // Toggle dropdown without resetting selectedIndex
+      setIsECommerceOpen(!isECommerceOpen);
+    } else {
+      // Set selected index only if a different item is clicked
+      if (selectedIndex !== index) {
+        setSelectedIndex(index);
+      }
+      setIsECommerceOpen(false);
+      setSelectedChild(null); // Reset selected child when navigating to other parent items
+      navigate(path, { replace: false });
+      console.log(`${categories[index].name} has been clicked.`);
+    }
+  };
+  
+  
+  const handleDropdownClick = (attrPath, attrIndex) => {
+    navigate(attrPath);
+    setSelectedChild(attrIndex); // Set the selected child index
+    setIsECommerceOpen(true);
+    setSelectedIndex(categories.findIndex((cat) => cat.name === 'E-Commerce')); // Set E-Commerce as active
+    console.log(`Navigated to ${attrPath}`);
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`${selectedIndex === index ? 'active' : ''} ${category.name === 'E-Commerce' && isECommerceOpen ? 'active' : ''
+                    }`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                  style={{
+                    color:
+                      category.name === 'E-Commerce' && isECommerceOpen
+                        ? 'var(--primary-color)'
+                        : selectedIndex === index
+                          ? 'var(--primary-color)'
+                          : 'inherit',
+                  }}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                    <span>
+                      <img
+                        src={
+                          hoveredIndex === index || selectedIndex === index
+                            ? category.colorImage
+                            : category.grayImage
+                        }
+                        alt={category.name}
+                        className="catImage"
+                      />
+                      <p className="catName">{category.name}</p>
+                    </span>
+                    {category.name !== 'Dashboard' && (
+                      <CgChevronDown
+                        className={`dropdownIcon ${isECommerceOpen && category.name === 'E-Commerce' ? 'open' : ''
+                          }`}
+                      />
+                    )}
+                  </span>
+                </li>
+
+                {category.name === 'E-Commerce' && isECommerceOpen && (
+                  <ul className="dropdownList">
+                    {eComAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+and there respective css file is;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin-top: -15px;
+  height: 81px;
+  padding: 0;
+}
+
+.logoImage {
+  max-width: 100%;
+  height: auto;
+  margin-top: 23px;
+}
+
+.navSection {
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Hide scrollbar but allow scrolling */
+.navSection::-webkit-scrollbar {
+  display: none;
+}
+
+.navSection {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.navSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navSection li {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-family: var(--font-family);
+  margin-bottom: 10px;
+}
+
+/* Pseudo-element for creating a gap */
+.navSection li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0;
+  width: 10px;
+  background-color: white;
+  z-index: 1;
+}
+
+/* Pseudo-element for the blue border with rounded corners */
+.navSection li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  bottom: 0;
+  width: 8px;
+  background-color: var(--primary-color);
+  border-radius: 10px 0 0 10px;
+  z-index: 0;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+/* Show the blue border with rounded corners on hover */
+.navSection li:hover::after {
+  opacity: 1;
+}
+
+/* Show the blue border with rounded corners when the item is active */
+.navSection li.active::after {
+  opacity: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px 0 10px;
+}
+
+.navItem>span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hover effect with gap and blue border */
+.navSection li:hover,
+.navItem.active {
+  background-color: var(--primary-color-opacity);
+  box-shadow: none;
+}
+
+.catName {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-regular);
+  line-height: 10px;
+}
+
+.navSection li:hover .catName {
+  color: var(--primary-color);
+}
+
+.catImage {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  object-fit: contain;
+}
+
+.dropdownIcon {
+  font-size: 16px;
+  transform: scale(0.8);
+  color: var(--text-color);
+  margin-right: 10px;
+  transition: transform 0.7s;
+}
+
+.dropdownIcon.open {
+  transform: rotate(180deg);
+}
+
+.dropdownList {
+  list-style: none;
+  line-height: 10px;
+  border-radius: 5px;
+}
+
+.dropdownItem {
+  padding: 10px 10px 10px 40px;
+  line-height: 20px;
+  cursor: pointer;
+  font-size: var(--font-size-avg);
+  font-weight: var(--font-weight-regular);
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--text-color);
+  border: none;
+  border-radius: 0;
+}
+
+.dropdownItem:hover {
+  background-color: var(--primary-color-opacity);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 0 !important;
+}
+
+/* Active state for selected child item */
+.dropdownItem.active {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0;
+}
+
+/* Exclude dropdown items from showing the effect when hovered */
+.navSection .dropdownItem:hover::after {
+  opacity: 0 !important;
+}
+
+/* Exclude dropdown items from showing the effect */
+.navSection .dropdownItem.active::after {
+  opacity: 0 !important;
+}
+
+/* Ensure that the active state is not overridden by hover */
+.dropdownItem.active:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+------------------------------------------------------------------------------------------------------------
+Dynamic Handling of li-Elements with Active State Handling with Dropdown Items All Elements Seperately:- (Sidebar.js) 23-9-2024
+------------------------------------------------------------------------------------------------------------
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+// import Dashboard_Primary from "../../Assets/Icons/Primary/icon.png"
+// import Dashboard_Secondary from "../../Assets/Icons/Primary/icon.png"
+import Pages_Primary from "../../Assets/Icons/Primary/page .png"
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png"
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png"
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png"
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png"
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png"
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png"
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png"
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png"
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png"
+import Users_Primary from "../../Assets/Icons/Primary/User.png"
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png"
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png"
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png"
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png"
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png"
+import History_Primary from "../../Assets/Icons/Primary/history.png"
+import History_Secondary from "../../Assets/Icons/Secondary/history .png"
+import Security_Primary from "../../Assets/Icons/Primary/security.png"
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png"
+// import Reports_Primary from "../../Assets/Icons/Primary/report .png"
+// import Reports_Secondary from "../../Assets/Icons/Secondary/report .png"
+// import Price_Primary from "../../Assets/Icons/Primary/pricetags .png"
+// import Price_Secondary from "../../Assets/Icons/Secondary/pricetags .png"
+// import Googleads_Primary from "../../Assets/Icons/Primary/googleads .png"
+// import Googleads_Secondary from "../../Assets/Icons/Secondary/googleads .png"
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChild, setSelectedChild] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true },
+  ];
+
+  const eComAttributes = [
+    { name: 'All Products', path: '/E-Commerce/All-Products' },
+    { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+    { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+    { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+    { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+  ];
+
+  const pagesAttributes = [
+    { name: 'Home', path: '/Pages/Home' },
+    { name: 'About', path: '/Pages/About' },
+  ];
+
+  const paymentsAttributes = [
+    { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+    { name: 'Transactions', path: '/Payments/Transactions' },
+  ];
+
+  const analyticsAttributes = [
+    { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+    { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+  ];
+
+  const marketingAttributes = [
+    { name: 'Campaigns', path: '/Marketing/Campaigns' },
+    { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+  ];
+
+  const usersAttributes = [
+    { name: 'User List', path: '/Users/User-List' },
+    { name: 'Roles', path: '/Users/Roles' },
+  ];
+
+  const settingsAttributes = [
+    { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+    { name: 'Account Settings', path: '/Settings/Account-Settings' },
+  ];
+
+  const blogsAttributes = [
+    { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+    { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+  ];
+
+  const historyAttributes = [
+    { name: 'Transaction History', path: '/History/Transaction-History' },
+    { name: 'User History', path: '/History/User-History' },
+  ];
+
+  const securityAttributes = [
+    { name: 'Access Logs', path: '/Security/Access-Logs' },
+    { name: 'User Permissions', path: '/Security/User-Permissions' },
+  ];
+
+  const reportsAttributes = [
+    { name: 'Monthly Reports', path: '/Reports/Monthly-Reports' },
+    { name: 'Annual Reports', path: '/Reports/Annual-Reports' },
+  ];
+
+  const priceTagsAttributes = [
+    { name: 'Active Tags', path: '/Price-Tags/Active-Tags' },
+    { name: 'Inactive Tags', path: '/Price-Tags/Inactive-Tags' },
+  ];
+
+  const googleAdsAttributes = [
+    { name: 'Campaigns', path: '/Google-Ads/Campaigns' },
+    { name: 'Ad Performance', path: '/Google-Ads/Ad-Performance' },
+  ];
+
+  const handleClick = (index, path, isDropdown) => {
+    if (isDropdown) {
+      setOpenDropdown(openDropdown === index ? null : index);
+    } else {
+      if (selectedIndex !== index) {
+        setSelectedIndex(index);
+      }
+      setOpenDropdown(null);
+      navigate(path, { replace: false });
+      console.log(`${categories[index].name} has been clicked.`);
+    }
+  };
+
+  const handleDropdownClick = (attrPath, attrIndex) => {
+    navigate(attrPath);
+    setSelectedChild(attrIndex);
+    console.log(`Navigated to ${attrPath}`);
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`${selectedIndex === index ? 'active' : ''} ${openDropdown === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                  style={{
+                    color: openDropdown === index ? 'var(--primary-color)' : selectedIndex === index ? 'var(--primary-color)' : 'inherit',
+                  }}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                    <span>
+                      <img
+                        src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                        alt={category.name}
+                        className="catImage"
+                      />
+                      <p className="catName">{category.name}</p>
+                    </span>
+                    {category.isDropdown && (
+                      <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />
+                    )}
+                  </span>
+                </li>
+
+                {openDropdown === index && (
+                  <ul className="dropdownList">
+                    {category.name === 'E-Commerce' && eComAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Pages' && pagesAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Payments' && paymentsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Analytics' && analyticsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Marketing' && marketingAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Users' && usersAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Settings' && settingsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Blogs' && blogsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'History' && historyAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Security' && securityAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Reports' && reportsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Price Tags' && priceTagsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                    {category.name === 'Google Ads' && googleAdsAttributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+No-Change in CSS File:-
+
+------------------------------------------------------------------------------------------------------------
+Dynamic Handling of li-Elements with Active State Handling with Dropdown Items All Elements in Looping:- (Sidebar.js) 23-9-2024
+------------------------------------------------------------------------------------------------------------
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+// import {
+//   Pages_Primary,
+//   Pages_Secondary,
+//   ECommerce_Primary,
+//   ECommerce_Secondary,
+//   Payments_Primary,
+//   Payments_Secondary,
+//   Analytics_Primary,
+//   Analytics_Secondary,
+//   Marketing_Primary,
+//   Marketing_Secondary,
+//   Users_Primary,
+//   Users_Secondary,
+//   Settings_Primary,
+//   Settings_Secondary,
+//   Blogs_Primary,
+//   Blogs_Secondary,
+//   History_Primary,
+//   History_Secondary,
+//   Security_Primary,
+//   Security_Secondary,
+// } from '../../Assets/Icons';
+
+// import Dashboard_Primary from "../../Assets/Icons/Primary/icon.png"
+// import Dashboard_Secondary from "../../Assets/Icons/Primary/icon.png"
+import Pages_Primary from "../../Assets/Icons/Primary/page .png"
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png"
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png"
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png"
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png"
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png"
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png"
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png"
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png"
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png"
+import Users_Primary from "../../Assets/Icons/Primary/User.png"
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png"
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png"
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png"
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png"
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png"
+import History_Primary from "../../Assets/Icons/Primary/history.png"
+import History_Secondary from "../../Assets/Icons/Secondary/history .png"
+import Security_Primary from "../../Assets/Icons/Primary/security.png"
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png"
+// import Reports_Primary from "../../Assets/Icons/Primary/report .png"
+// import Reports_Secondary from "../../Assets/Icons/Secondary/report .png"
+// import Price_Primary from "../../Assets/Icons/Primary/pricetags .png"
+// import Price_Secondary from "../../Assets/Icons/Secondary/pricetags .png"
+// import Googleads_Primary from "../../Assets/Icons/Primary/googleads .png"
+// import Googleads_Secondary from "../../Assets/Icons/Secondary/googleads .png"
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChild, setSelectedChild] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true },
+    // Add other categories as needed
+  ];
+
+  const attributesMap = {
+    'E-Commerce': [
+      { name: 'All Products', path: '/E-Commerce/All-Products' },
+      { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+      { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+      { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+      { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+    ],
+    Pages: [
+      { name: 'Home', path: '/Pages/Home' },
+      { name: 'About', path: '/Pages/About' },
+    ],
+    Payments: [
+      { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+      { name: 'Transactions', path: '/Payments/Transactions' },
+    ],
+    Analytics: [
+      { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+      { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+    ],
+    Marketing: [
+      { name: 'Campaigns', path: '/Marketing/Campaigns' },
+      { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+    ],
+    Users: [
+      { name: 'User List', path: '/Users/User-List' },
+      { name: 'Roles', path: '/Users/Roles' },
+    ],
+    Settings: [
+      { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+      { name: 'Account Settings', path: '/Settings/Account-Settings' },
+    ],
+    Blogs: [
+      { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+      { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+    ],
+    History: [
+      { name: 'Transaction History', path: '/History/Transaction-History' },
+      { name: 'User History', path: '/History/User-History' },
+    ],
+    Security: [
+      { name: 'Access Logs', path: '/Security/Access-Logs' },
+      { name: 'User Permissions', path: '/Security/User-Permissions' },
+    ],
+  };
+
+  const handleClick = (index, path, isDropdown) => {
+    if (isDropdown) {
+      setOpenDropdown(openDropdown === index ? null : index);
+    } else {
+      setSelectedIndex(index);
+      setOpenDropdown(null);
+      navigate(path);
+    }
+  };
+
+  const handleDropdownClick = (attrPath, attrIndex) => {
+    navigate(attrPath);
+    setSelectedChild(attrIndex);
+  };
+
+  const renderDropdownItems = (categoryName) => {
+    return (
+      <ul className="dropdownList">
+        {attributesMap[categoryName]?.map((attr, attrIndex) => (
+          <li
+            key={attrIndex}
+            className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+            onClick={() => handleDropdownClick(attr.path, attrIndex)}
+          >
+            {attr.name}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`navItem ${selectedIndex === index ? 'active' : ''} ${openDropdown === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                  style={{
+                    color: openDropdown === index ? 'var(--primary-color)' : selectedIndex === index ? 'var(--primary-color)' : 'inherit',
+                  }}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                  <span>
+                    <img
+                      src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                      alt={category.name}
+                      className="catImage"
+                    />
+                    <p className="catName">{category.name}</p>
+                    {category.isDropdown && <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />}
+                  </span>
+                  </span>
+                </li>
+                {openDropdown === index && renderDropdownItems(category.name)}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+           ----------------------------------------------------------------------------------------------
+
+// Dynamic Case: 02 (Approved & Implemented Case)
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+// import Dashboard_Primary from "../../Assets/Icons/Primary/icon.png"
+// import Dashboard_Secondary from "../../Assets/Icons/Primary/icon.png"
+import Pages_Primary from "../../Assets/Icons/Primary/page .png"
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png"
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png"
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png"
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png"
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png"
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png"
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png"
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png"
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png"
+import Users_Primary from "../../Assets/Icons/Primary/User.png"
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png"
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png"
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png"
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png"
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png"
+import History_Primary from "../../Assets/Icons/Primary/history.png"
+import History_Secondary from "../../Assets/Icons/Secondary/history .png"
+import Security_Primary from "../../Assets/Icons/Primary/security.png"
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png"
+// import Reports_Primary from "../../Assets/Icons/Primary/report .png"
+// import Reports_Secondary from "../../Assets/Icons/Secondary/report .png"
+// import Price_Primary from "../../Assets/Icons/Primary/pricetags .png"
+// import Price_Secondary from "../../Assets/Icons/Secondary/pricetags .png"
+// import Googleads_Primary from "../../Assets/Icons/Primary/googleads .png"
+// import Googleads_Secondary from "../../Assets/Icons/Secondary/googleads .png"
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChild, setSelectedChild] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  const eComAttributes = [
+    { name: 'All Products', path: '/E-Commerce/All-Products' },
+    { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+    { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+    { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+    { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+  ];
+
+  const pagesAttributes = [
+    { name: 'Home', path: '/Pages/Home' },
+    { name: 'About', path: '/Pages/About' },
+  ];
+
+  const paymentsAttributes = [
+    { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+    { name: 'Transactions', path: '/Payments/Transactions' },
+  ];
+
+  const analyticsAttributes = [
+    { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+    { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+  ];
+
+  const marketingAttributes = [
+    { name: 'Campaigns', path: '/Marketing/Campaigns' },
+    { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+  ];
+
+  const usersAttributes = [
+    { name: 'User List', path: '/Users/User-List' },
+    { name: 'Roles', path: '/Users/Roles' },
+  ];
+
+  const settingsAttributes = [
+    { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+    { name: 'Account Settings', path: '/Settings/Account-Settings' },
+  ];
+
+  const blogsAttributes = [
+    { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+    { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+  ];
+
+  const historyAttributes = [
+    { name: 'Transaction History', path: '/History/Transaction-History' },
+    { name: 'User History', path: '/History/User-History' },
+  ];
+
+  const securityAttributes = [
+    { name: 'Access Logs', path: '/Security/Access-Logs' },
+    { name: 'User Permissions', path: '/Security/User-Permissions' },
+  ];
+
+  const reportsAttributes = [
+    { name: 'Monthly Reports', path: '/Reports/Monthly-Reports' },
+    { name: 'Annual Reports', path: '/Reports/Annual-Reports' },
+  ];
+
+  const priceTagsAttributes = [
+    { name: 'Active Tags', path: '/Price-Tags/Active-Tags' },
+    { name: 'Inactive Tags', path: '/Price-Tags/Inactive-Tags' },
+  ];
+
+  const googleAdsAttributes = [
+    { name: 'Campaigns', path: '/Google-Ads/Campaigns' },
+    { name: 'Ad Performance', path: '/Google-Ads/Ad-Performance' },
+  ];
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true, attributes: eComAttributes },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true, attributes: pagesAttributes },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true, attributes: paymentsAttributes },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true, attributes: analyticsAttributes },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true, attributes: marketingAttributes },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true, attributes: usersAttributes },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true, attributes: settingsAttributes },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true, attributes: blogsAttributes },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true, attributes: historyAttributes },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true, attributes: securityAttributes },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: reportsAttributes },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: priceTagsAttributes },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: googleAdsAttributes },
+  ];
+
+  const handleClick = (index, path, isDropdown) => {
+    if (isDropdown) {
+      setOpenDropdown(openDropdown === index ? null : index);
+    } else {
+      if (selectedIndex !== index) {
+        setSelectedIndex(index);
+      }
+      setOpenDropdown(null);
+      navigate(path, { replace: false });
+      console.log(`${categories[index].name} has been clicked.`);
+    }
+  };
+
+  const handleDropdownClick = (attrPath, attrIndex, parentIndex) => {
+    navigate(attrPath);
+    setSelectedChild(attrIndex);
+    setSelectedIndex(parentIndex); // Set the parent as active
+    console.log(`Navigated to ${attrPath}`);
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`${selectedIndex === index ? 'active' : ''} ${openDropdown === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                  style={{
+                    color: openDropdown === index || selectedIndex === index ? 'var(--primary-color)' : 'inherit',
+                  }}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                    <span>
+                      <img
+                        src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                        alt={category.name}
+                        className="catImage"
+                      />
+                      <p className="catName">{category.name}</p>
+                    </span>
+                    {category.isDropdown && (
+                      <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />
+                    )}
+                  </span>
+                </li>
+
+                {openDropdown === index && (
+                  <ul className="dropdownList">
+                    {category.attributes.map((attr, attrIndex) => ( // Assuming you have a unified attributes array
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex, index)} // Pass parent index
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+            -----------------------------------------------------------------------------------------------
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+// import Dashboard_Primary from "../../Assets/Icons/Primary/icon.png"
+// import Dashboard_Secondary from "../../Assets/Icons/Primary/icon.png"
+import Pages_Primary from "../../Assets/Icons/Primary/page .png"
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png"
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png"
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png"
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png"
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png"
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png"
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png"
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png"
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png"
+import Users_Primary from "../../Assets/Icons/Primary/User.png"
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png"
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png"
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png"
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png"
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png"
+import History_Primary from "../../Assets/Icons/Primary/history.png"
+import History_Secondary from "../../Assets/Icons/Secondary/history .png"
+import Security_Primary from "../../Assets/Icons/Primary/security.png"
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png"
+// import Reports_Primary from "../../Assets/Icons/Primary/report .png"
+// import Reports_Secondary from "../../Assets/Icons/Secondary/report .png"
+// import Price_Primary from "../../Assets/Icons/Primary/pricetags .png"
+// import Price_Secondary from "../../Assets/Icons/Secondary/pricetags .png"
+// import Googleads_Primary from "../../Assets/Icons/Primary/googleads .png"
+// import Googleads_Secondary from "../../Assets/Icons/Secondary/googleads .png"
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChild, setSelectedChild] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  const eComAttributes = [
+    { name: 'All Products', path: '/E-Commerce/All-Products' },
+    { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+    { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+    { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+    { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+  ];
+
+  const pagesAttributes = [
+    { name: 'Home', path: '/Pages/Home' },
+    { name: 'About', path: '/Pages/About' },
+  ];
+
+  const paymentsAttributes = [
+    { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+    { name: 'Transactions', path: '/Payments/Transactions' },
+  ];
+
+  const analyticsAttributes = [
+    { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+    { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+  ];
+
+  const marketingAttributes = [
+    { name: 'Campaigns', path: '/Marketing/Campaigns' },
+    { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+  ];
+
+  const usersAttributes = [
+    { name: 'User List', path: '/Users/User-List' },
+    { name: 'Roles', path: '/Users/Roles' },
+  ];
+
+  const settingsAttributes = [
+    { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+    { name: 'Account Settings', path: '/Settings/Account-Settings' },
+  ];
+
+  const blogsAttributes = [
+    { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+    { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+  ];
+
+  const historyAttributes = [
+    { name: 'Transaction History', path: '/History/Transaction-History' },
+    { name: 'User History', path: '/History/User-History' },
+  ];
+
+  const securityAttributes = [
+    { name: 'Access Logs', path: '/Security/Access-Logs' },
+    { name: 'User Permissions', path: '/Security/User-Permissions' },
+  ];
+
+  const reportsAttributes = [
+    { name: 'Monthly Reports', path: '/Reports/Monthly-Reports' },
+    { name: 'Annual Reports', path: '/Reports/Annual-Reports' },
+  ];
+
+  const priceTagsAttributes = [
+    { name: 'Active Tags', path: '/Price-Tags/Active-Tags' },
+    { name: 'Inactive Tags', path: '/Price-Tags/Inactive-Tags' },
+  ];
+
+  const googleAdsAttributes = [
+    { name: 'Campaigns', path: '/Google-Ads/Campaigns' },
+    { name: 'Ad Performance', path: '/Google-Ads/Ad-Performance' },
+  ];
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true, attributes: pagesAttributes },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true, attributes: eComAttributes },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true, attributes: paymentsAttributes },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true, attributes: analyticsAttributes },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true, attributes: marketingAttributes },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true, attributes: usersAttributes },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true, attributes: settingsAttributes },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true, attributes: blogsAttributes },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true, attributes: historyAttributes },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true, attributes: securityAttributes },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: reportsAttributes },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: priceTagsAttributes },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: googleAdsAttributes },
+  ];
+
+  const handleClick = (index, path, isDropdown) => {
+    if (isDropdown) {
+      setOpenDropdown(openDropdown === index ? null : index);
+    } else {
+      if (selectedIndex !== index) {
+        setSelectedIndex(index);
+      }
+      setOpenDropdown(null);
+      navigate(path, { replace: false });
+      console.log(`${categories[index].name} has been clicked.`);
+    }
+  };
+
+  const handleDropdownClick = (attrPath, attrIndex, parentIndex) => {
+    navigate(attrPath);
+    setSelectedChild(attrIndex);
+    setSelectedIndex(parentIndex); // Set the parent as active
+    console.log(`Navigated to ${attrPath}`);
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`${selectedIndex === index ? 'active' : ''} ${openDropdown === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                  style={{
+                    color: openDropdown === index || selectedIndex === index ? 'var(--primary-color)' : 'inherit',
+                  }}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                    <span>
+                      <img
+                        src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                        alt={category.name}
+                        className="catImage"
+                      />
+                      <p className="catName">{category.name}</p>
+                    </span>
+                    {category.isDropdown && (
+                      <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />
+                    )}
+                  </span>
+                </li>
+
+                {openDropdown === index && (
+                  <ul className="dropdownList">
+                    {category.attributes.map((attr, attrIndex) => ( // Assuming you have a unified attributes array
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChild === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex, index)} // Pass parent index
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+------------------------------------------------------------------------------------------------------------
+Dynamic Handling of li-Elements with Active State Handling with Dropdown Items All Elements in Looping:- (Sidebar.js) 24-9-2024
+------------------------------------------------------------------------------------------------------------
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+// import Dashboard_Primary from "../../Assets/Icons/Primary/icon.png"
+// import Dashboard_Secondary from "../../Assets/Icons/Primary/icon.png"
+import Pages_Primary from "../../Assets/Icons/Primary/page .png"
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png"
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png"
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png"
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png"
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png"
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png"
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png"
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png"
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png"
+import Users_Primary from "../../Assets/Icons/Primary/User.png"
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png"
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png"
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png"
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png"
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png"
+import History_Primary from "../../Assets/Icons/Primary/history.png"
+import History_Secondary from "../../Assets/Icons/Secondary/history .png"
+import Security_Primary from "../../Assets/Icons/Primary/security.png"
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png"
+// import Reports_Primary from "../../Assets/Icons/Primary/report .png"
+// import Reports_Secondary from "../../Assets/Icons/Secondary/report .png"
+// import Price_Primary from "../../Assets/Icons/Primary/pricetags .png"
+// import Price_Secondary from "../../Assets/Icons/Secondary/pricetags .png"
+// import Googleads_Primary from "../../Assets/Icons/Primary/googleads .png"
+// import Googleads_Secondary from "../../Assets/Icons/Secondary/googleads .png"
+
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChildren, setSelectedChildren] = useState({}); // Object to store selected child indices
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  // Define attributes...
+
+  const eComAttributes = [
+    { name: 'All Products', path: '/E-Commerce/All-Products' },
+    { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+    { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+    { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+    { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+  ];
+
+  const pagesAttributes = [
+    { name: 'Home', path: '/Pages/Home' },
+    { name: 'About', path: '/Pages/About' },
+  ];
+
+  const paymentsAttributes = [
+    { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+    { name: 'Transactions', path: '/Payments/Transactions' },
+  ];
+
+  const analyticsAttributes = [
+    { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+    { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+  ];
+
+  const marketingAttributes = [
+    { name: 'Campaigns', path: '/Marketing/Campaigns' },
+    { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+  ];
+
+  const usersAttributes = [
+    { name: 'User List', path: '/Users/User-List' },
+    { name: 'Roles', path: '/Users/Roles' },
+  ];
+
+  const settingsAttributes = [
+    { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+    { name: 'Account Settings', path: '/Settings/Account-Settings' },
+  ];
+
+  const blogsAttributes = [
+    { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+    { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+  ];
+
+  const historyAttributes = [
+    { name: 'Transaction History', path: '/History/Transaction-History' },
+    { name: 'User History', path: '/History/User-History' },
+  ];
+
+  const securityAttributes = [
+    { name: 'Access Logs', path: '/Security/Access-Logs' },
+    { name: 'User Permissions', path: '/Security/User-Permissions' },
+  ];
+
+  const reportsAttributes = [
+    { name: 'Monthly Reports', path: '/Reports/Monthly-Reports' },
+    { name: 'Annual Reports', path: '/Reports/Annual-Reports' },
+  ];
+
+  const priceTagsAttributes = [
+    { name: 'Active Tags', path: '/Price-Tags/Active-Tags' },
+    { name: 'Inactive Tags', path: '/Price-Tags/Inactive-Tags' },
+  ];
+
+  const googleAdsAttributes = [
+    { name: 'Campaigns', path: '/Google-Ads/Campaigns' },
+    { name: 'Ad Performance', path: '/Google-Ads/Ad-Performance' },
+  ];
+
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true, attributes: pagesAttributes },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true, attributes: eComAttributes },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true, attributes: paymentsAttributes },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true, attributes: analyticsAttributes },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true, attributes: marketingAttributes },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true, attributes: usersAttributes },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true, attributes: settingsAttributes },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true, attributes: blogsAttributes },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true, attributes: historyAttributes },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true, attributes: securityAttributes },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: reportsAttributes },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: priceTagsAttributes },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: googleAdsAttributes },
+  ];
+
+  const handleClick = (index, path, isDropdown) => {
+    if (isDropdown) {
+      setOpenDropdown(openDropdown === index ? null : index);
+    } else {
+      setSelectedIndex(index);
+      setOpenDropdown(null);
+      navigate(path, { replace: false });
+      console.log(`${categories[index].name} has been clicked.`);
+    }
+  };
+
+  const handleDropdownClick = (attrPath, attrIndex, parentIndex) => {
+    navigate(attrPath);
+    setSelectedChildren(prev => ({ ...prev, [parentIndex]: attrIndex })); // Store selected child for the parent
+    console.log(`Navigated to ${attrPath}`);
+  };
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`${selectedIndex === index ? 'active' : ''} ${openDropdown === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                  style={{
+                    color: openDropdown === index || selectedIndex === index ? 'var(--primary-color)' : 'inherit',
+                  }}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                    <span>
+                      <img
+                        src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                        alt={category.name}
+                        className="catImage"
+                      />
+                      <p className="catName">{category.name}</p>
+                    </span>
+                    {category.isDropdown && (
+                      <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />
+                    )}
+                  </span>
+                </li>
+
+                {openDropdown === index && (
+                  <ul className="dropdownList">
+                    {category.attributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChildren[index] === attrIndex ? 'active' : ''}`} // Use unique child indexing
+                        onClick={() => handleDropdownClick(attr.path, attrIndex, index)} // Pass parent index
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+
+------------------------------------------------------------------------------------------------------------
+Optimized dynamic handling of all li-elements with there active states-updated:- (Sidebar.js) 24-9-2024
+------------------------------------------------------------------------------------------------------------
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+
+// Import images for the categories
+import Pages_Primary from "../../Assets/Icons/Primary/page .png";
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png";
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png";
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png";
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png";
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png";
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png";
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png";
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png";
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png";
+import Users_Primary from "../../Assets/Icons/Primary/User.png";
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png";
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png";
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png";
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png";
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png";
+import History_Primary from "../../Assets/Icons/Primary/history.png";
+import History_Secondary from "../../Assets/Icons/Secondary/history .png";
+import Security_Primary from "../../Assets/Icons/Primary/security.png";
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png";
+
+// Define category attributes
+const eComAttributes = [
+  { name: 'All Products', path: '/E-Commerce/All-Products' },
+  { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+  { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+  { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+  { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+];
+
+const pagesAttributes = [
+  { name: 'Home', path: '/Pages/Home' },
+  { name: 'About', path: '/Pages/About' },
+];
+
+const paymentsAttributes = [
+  { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+  { name: 'Transactions', path: '/Payments/Transactions' },
+];
+
+const analyticsAttributes = [
+  { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+  { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+];
+
+const marketingAttributes = [
+  { name: 'Campaigns', path: '/Marketing/Campaigns' },
+  { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+];
+
+const usersAttributes = [
+  { name: 'User List', path: '/Users/User-List' },
+  { name: 'Roles', path: '/Users/Roles' },
+];
+
+const settingsAttributes = [
+  { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+  { name: 'Account Settings', path: '/Settings/Account-Settings' },
+];
+
+const blogsAttributes = [
+  { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+  { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+];
+
+const historyAttributes = [
+  { name: 'Transaction History', path: '/History/Transaction-History' },
+  { name: 'User History', path: '/History/User-History' },
+];
+
+const securityAttributes = [
+  { name: 'Access Logs', path: '/Security/Access-Logs' },
+  { name: 'User Permissions', path: '/Security/User-Permissions' },
+];
+
+const reportsAttributes = [
+  { name: 'Monthly Reports', path: '/Reports/Monthly-Reports' },
+  { name: 'Annual Reports', path: '/Reports/Annual-Reports' },
+];
+
+const priceTagsAttributes = [
+  { name: 'Active Tags', path: '/Price-Tags/Active-Tags' },
+  { name: 'Inactive Tags', path: '/Price-Tags/Inactive-Tags' },
+];
+
+const googleAdsAttributes = [
+  { name: 'Campaigns', path: '/Google-Ads/Campaigns' },
+  { name: 'Ad Performance', path: '/Google-Ads/Ad-Performance' },
+];
+
+// Main Sidebar Component
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChildren, setSelectedChildren] = useState({}); // Stores selected child indices per parent
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  // Categories with associated attributes
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true, attributes: pagesAttributes },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true, attributes: eComAttributes },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true, attributes: paymentsAttributes },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true, attributes: analyticsAttributes },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true, attributes: marketingAttributes },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true, attributes: usersAttributes },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true, attributes: settingsAttributes },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true, attributes: blogsAttributes },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true, attributes: historyAttributes },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true, attributes: securityAttributes },
+    { name: 'Reports', path: '/Reports', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: reportsAttributes },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: priceTagsAttributes },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: '/GrayImage.png', colorImage: '/ColorImage.png', isDropdown: true, attributes: googleAdsAttributes },
+  ];
+
+  // // Handle click on parent category
+  // const handleClick = (index, path, isDropdown) => {
+  //   if (isDropdown) {
+  //     setOpenDropdown(openDropdown === index ? null : index);
+  //   } else {
+  //     setSelectedIndex(index);
+  //     setSelectedChildren({}); // Clear child selections when parent is clicked
+  //     setOpenDropdown(null);
+  //     navigate(path);
+  //   }
+  // };
+
+  // // Handle click on dropdown (child) item
+  // const handleDropdownClick = (attrPath, attrIndex, parentIndex) => {
+  //   navigate(attrPath);
+  //   setSelectedChildren({ [parentIndex]: attrIndex }); // Set selected child and clear others
+  //   setSelectedIndex(parentIndex); // Highlight parent when child is selected
+  // };
+
+// Handle click on parent category
+const handleClick = (index, path, isDropdown) => {
+  if (isDropdown) {
+    setOpenDropdown(openDropdown === index ? null : index);
+  } else {
+    setSelectedIndex(index);
+    setSelectedChildren({}); // Clear child selections when parent is clicked
+    setOpenDropdown(null);
+    navigate(path);
+  }
+};
+
+// Handle click on dropdown (child) item
+const handleDropdownClick = (attrPath, attrIndex, parentIndex) => {
+  navigate(attrPath);
+  setSelectedChildren({ [parentIndex]: attrIndex }); // Set selected child and clear others
+  setSelectedIndex(parentIndex); // Highlight parent when child is selected
+};
+
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`category-item ${selectedIndex === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                >
+                  <span className="navItem">
+                  <span>
+                    <img
+                      src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                      alt={category.name}
+                      className="catImage"
+                    />
+                    <p className="catName">{category.name}</p>
+                    </span>
+                    {category.isDropdown && <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />}
+                  </span>
+                </li>
+
+                {openDropdown === index && (
+                  <ul className="dropdownList">
+                    {category.attributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChildren[index] === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex, index)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+------------------------------------------------------------------------------------------------------------
+Updated Code:- 24-9-24 1:15pm (Sidebar.js)
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
+import { CgChevronDown } from 'react-icons/cg';
+
+// Import images for the categories
+import Dashboard_Primary from "../../Assets/Icons/Primary/Analytics .png"
+import Dashboard_Secondary from "../../Assets/Icons/Secondary/analytics 1.png"
+import Pages_Primary from "../../Assets/Icons/Primary/page .png";
+import Pages_Secondary from "../../Assets/Icons/Secondary/page .png";
+import ECommerce_Primary from "../../Assets/Icons/Primary/ecommerce .png";
+import ECommerce_Secondary from "../../Assets/Icons/Secondary/ecommerce .png";
+import Payments_Primary from "../../Assets/Icons/Primary/payment .png";
+import Payments_Secondary from "../../Assets/Icons/Secondary/payment .png";
+import Analytics_Primary from "../../Assets/Icons/Primary/Analytics.png";
+import Analytics_Secondary from "../../Assets/Icons/Secondary/analytics .png";
+import Marketing_Primary from "../../Assets/Icons/Primary/marking .png";
+import Marketing_Secondary from "../../Assets/Icons/Secondary/marketing .png";
+import Users_Primary from "../../Assets/Icons/Primary/User.png";
+import Users_Secondary from "../../Assets/Icons/Secondary/user.png";
+import Settings_Primary from "../../Assets/Icons/Primary/setting .png";
+import Settings_Secondary from "../../Assets/Icons/Secondary/setting .png";
+import Blogs_Primary from "../../Assets/Icons/Primary/blogs .png";
+import Blogs_Secondary from "../../Assets/Icons/Secondary/blogs .png";
+import History_Primary from "../../Assets/Icons/Primary/history.png";
+import History_Secondary from "../../Assets/Icons/Secondary/history .png";
+import Security_Primary from "../../Assets/Icons/Primary/security.png";
+import Security_Secondary from "../../Assets/Icons/Secondary/security.png";
+import Reports_Primary from "../../Assets/Icons/Primary/security.png"
+import Reports_Secondary from "../../Assets/Icons/Secondary/security.png"
+import Price_Primary from "../../Assets/Icons/Primary/security.png"
+import Price_Secondary from "../../Assets/Icons/Secondary/security.png"
+import Googleads_Primary from "../../Assets/Icons/Primary/security.png"
+import Googleads_Secondary from "../../Assets/Icons/Secondary/security.png"
+
+// Define category attributes
+const eComAttributes = [
+  { name: 'All Products', path: '/E-Commerce/All-Products' },
+  { name: 'Add Products', path: '/E-Commerce/Add-Products' },
+  { name: 'Product Categories', path: '/E-Commerce/Product-Categories' },
+  { name: 'Product Tags', path: '/E-Commerce/Product-Tags' },
+  { name: 'Product Attributes', path: '/E-Commerce/Product-Attributes' },
+];
+
+const pagesAttributes = [
+  { name: 'Home', path: '/Pages/Home' },
+  { name: 'About', path: '/Pages/About' },
+];
+
+const paymentsAttributes = [
+  { name: 'Payment Methods', path: '/Payments/Payment-Methods' },
+  { name: 'Transactions', path: '/Payments/Payment-Transactions' },
+];
+
+const analyticsAttributes = [
+  { name: 'Sales Reports', path: '/Analytics/Sales-Reports' },
+  { name: 'User Analytics', path: '/Analytics/User-Analytics' },
+];
+
+const marketingAttributes = [
+  { name: 'Campaigns', path: '/Marketing/Campaigns' },
+  { name: 'Email Marketing', path: '/Marketing/Email-Marketing' },
+];
+
+const usersAttributes = [
+  { name: 'User List', path: '/Users/User-List' },
+  { name: 'Roles', path: '/Users/Roles' },
+];
+
+const settingsAttributes = [
+  { name: 'Profile Settings', path: '/Settings/Profile-Settings' },
+  { name: 'Account Settings', path: '/Settings/Account-Settings' },
+];
+
+const blogsAttributes = [
+  { name: 'All Blogs', path: '/Blogs/All-Blogs' },
+  { name: 'Add Blog', path: '/Blogs/Add-Blog' },
+];
+
+const historyAttributes = [
+  { name: 'Transaction History', path: '/History/Transaction-History' },
+  { name: 'User History', path: '/History/User-History' },
+];
+
+const securityAttributes = [
+  { name: 'Access Logs', path: '/Security/Access-Logs' },
+  { name: 'User Permissions', path: '/Security/User-Permissions' },
+];
+
+const reportsAttributes = [
+  { name: 'Monthly Reports', path: '/Reports/Monthly-Reports' },
+  { name: 'Annual Reports', path: '/Reports/Annual-Reports' },
+];
+
+const priceTagsAttributes = [
+  { name: 'Active Tags', path: '/Price-Tags/Active-Tags' },
+  { name: 'Inactive Tags', path: '/Price-Tags/Inactive-Tags' },
+];
+
+const googleAdsAttributes = [
+  { name: 'Campaigns', path: '/Google-Ads/Campaigns' },
+  { name: 'Ad Performance', path: '/Google-Ads/Ad-Performance' },
+];
+
+// Main Sidebar Component
+function Sidebar() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedChildren, setSelectedChildren] = useState({}); // Stores selected child indices per parent
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  // Categories with associated attributes
+  const categories = [
+    { name: 'Dashboard', path: '/Dashboard', grayImage: Dashboard_Secondary, colorImage: Dashboard_Primary, isDropdown: false },
+    { name: 'Pages', path: '/Pages', grayImage: Pages_Secondary, colorImage: Pages_Primary, isDropdown: true, attributes: pagesAttributes },
+    { name: 'E-Commerce', path: '/E-Commerce', grayImage: ECommerce_Secondary, colorImage: ECommerce_Primary, isDropdown: true, attributes: eComAttributes },
+    { name: 'Payments', path: '/Payments', grayImage: Payments_Secondary, colorImage: Payments_Primary, isDropdown: true, attributes: paymentsAttributes },
+    { name: 'Analytics', path: '/Analytics', grayImage: Analytics_Secondary, colorImage: Analytics_Primary, isDropdown: true, attributes: analyticsAttributes },
+    { name: 'Marketing', path: '/Marketing', grayImage: Marketing_Secondary, colorImage: Marketing_Primary, isDropdown: true, attributes: marketingAttributes },
+    { name: 'Users', path: '/Users', grayImage: Users_Secondary, colorImage: Users_Primary, isDropdown: true, attributes: usersAttributes },
+    { name: 'Settings', path: '/Settings', grayImage: Settings_Secondary, colorImage: Settings_Primary, isDropdown: true, attributes: settingsAttributes },
+    { name: 'Blogs', path: '/Blogs', grayImage: Blogs_Secondary, colorImage: Blogs_Primary, isDropdown: true, attributes: blogsAttributes },
+    { name: 'History', path: '/History', grayImage: History_Secondary, colorImage: History_Primary, isDropdown: true, attributes: historyAttributes },
+    { name: 'Security', path: '/Security', grayImage: Security_Secondary, colorImage: Security_Primary, isDropdown: true, attributes: securityAttributes },
+    { name: 'Reports', path: '/Reports', grayImage: Reports_Secondary, colorImage: Reports_Primary, isDropdown: true, attributes: reportsAttributes },
+    { name: 'Price Tags', path: '/Price-Tags', grayImage: Price_Secondary, colorImage: Price_Primary, isDropdown: true, attributes: priceTagsAttributes },
+    { name: 'Google Ads', path: '/Google-Ads', grayImage: Googleads_Secondary, colorImage: Googleads_Primary, isDropdown: true, attributes: googleAdsAttributes },
+  ];
+
+// Handle click on parent category
+const handleClick = (index, path, isDropdown) => {
+  if (isDropdown) {
+    setOpenDropdown(openDropdown === index ? null : index);
+  } else {
+    setSelectedIndex(index);
+    setSelectedChildren({}); // Clear child selections when parent is clicked
+    setOpenDropdown(null);
+    navigate(path);
+  }
+};
+
+// Handle click on dropdown (child) item
+const handleDropdownClick = (attrPath, attrIndex, parentIndex) => {
+  navigate(attrPath);
+  setSelectedChildren({ [parentIndex]: attrIndex }); // Set selected child and clear others
+  setSelectedIndex(parentIndex); // Highlight parent when child is selected
+};
+
+  return (
+    <aside className="sidebar">
+      <div className="logoSection">
+        <img src="/FM_Logo.png" alt="Logo" className="logoImage" />
+      </div>
+
+      <div className="navSection">
+        <nav>
+          <ul>
+            {categories.map((category, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className={`category-item ${selectedIndex === index ? 'active' : ''}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => handleClick(index, category.path, category.isDropdown)}
+                >
+                  <span className={`navItem ${selectedIndex === index ? 'active' : ''}`}>
+                  <span>
+                    <img
+                      src={hoveredIndex === index || selectedIndex === index ? category.colorImage : category.grayImage}
+                      alt={category.name}
+                      className="catImage"
+                    />
+                    <p className="catName">{category.name}</p>
+                    </span>
+                    {category.isDropdown && <CgChevronDown className={`dropdownIcon ${openDropdown === index ? 'open' : ''}`} />}
+                  </span>
+                </li>
+
+                {openDropdown === index && (
+                  <ul className="dropdownList">
+                    {category.attributes.map((attr, attrIndex) => (
+                      <li
+                        key={attrIndex}
+                        className={`dropdownItem ${selectedChildren[index] === attrIndex ? 'active' : ''}`}
+                        onClick={() => handleDropdownClick(attr.path, attrIndex, index)}
+                      >
+                        {attr.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </React.Fragment>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  );
+}
+
+export default Sidebar;
+
+respective css file is;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin-top: -15px;
+  height: 81px;
+  padding: 0;
+}
+
+.logoImage {
+  max-width: 100%;
+  height: auto;
+  margin-top: 23px;
+}
+
+.navSection {
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Hide scrollbar but allow scrolling */
+.navSection::-webkit-scrollbar {
+  display: none;
+}
+
+.navSection {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.navSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navSection li {
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-family: var(--font-family);
+  margin-bottom: 10px;
+}
+
+/* Pseudo-element for creating a gap */
+.navSection li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0;
+  width: 10px;
+  background-color: white;
+  z-index: 1;
+}
+
+/* Pseudo-element for the blue border with rounded corners */
+.navSection li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  bottom: 0;
+  width: 8px;
+  background-color: var(--primary-color);
+  border-radius: 10px 0 0 10px;
+  z-index: 0;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+/* Show the blue border with rounded corners on hover */
+.navSection li:hover::after {
+  opacity: 1;
+}
+
+/* Show the blue border with rounded corners when the item is active */
+.navSection li.active::after {
+  opacity: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px 0 10px;
+}
+
+.navItem>span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hover effect with gap and blue border */
+.navSection li:hover,
+.navItem.active {
+  background-color: var(--primary-color-opacity);
+  box-shadow: none;
+}
+
+.catName {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-regular);
+  line-height: 10px;
+}
+
+.navSection li:hover .catName {
+  color: var(--primary-color);
+}
+
+.catImage {
+  width: 28px;
+  height: auto;
+  margin-left: 5px;
+  object-fit: contain;
+}
+
+.dropdownIcon {
+  font-size: 16px;
+  transform: scale(0.8);
+  color: var(--text-color);
+  margin-right: 10px;
+  transition: transform 0.7s;
+}
+
+.dropdownIcon.open {
+  transform: rotate(180deg);
+}
+
+/* .dropdownList {
+  list-style: none;
+  line-height: 10px;
+  border-radius: 5px;
+} */
+
+.dropdownList {
+  list-style: none;
+  max-height: 500; /* Start closed */
+  line-height: 10px;
+  border-radius: 5px;
+  transition: max-height 0.3s ease-in-out; /* Smooth transition */
+}
+
+.navSection li.open .dropdownList {
+  max-height: 100px; /* Adjust based on expected content height */
+}
+
+.dropdownItem {
+  padding: 10px 10px 10px 50px;
+  line-height: 20px;
+  cursor: pointer;
+  font-size: var(--font-size-avg);
+  font-weight: var(--font-weight-regular);
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--text-color);
+  border: none;
+  border-radius: 0;
+}
+
+.dropdownItem:hover {
+  background-color: var(--primary-color-opacity);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 0 !important;
+}
+
+/* Active state for selected child item */
+.dropdownItem.active {
+  background-color: var(--primary-color-opacity);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px;
+}
+
+/* Exclude dropdown items from showing the effect when hovered */
+.navSection .dropdownItem:hover::after {
+  opacity: 0 !important;
+}
+
+/* Exclude dropdown items from showing the effect */
+.navSection .dropdownItem.active::after {
+  opacity: 0 !important;
+}
+
+/* Ensure that the active state is not overridden by hover */
+/* .dropdownItem.active:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+} */
+
+.navSection li.active .catName {
+  color: var(--primary-color) /* Change text color */
+}
+

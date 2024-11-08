@@ -1,0 +1,27 @@
+.main-loader-container{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 10px; */
+    justify-content: center;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.1);  */
+    backdrop-filter: blur(3px); /* Adjust the blur intensity as needed */
+}
+
+.main-loader-container img{
+    width: auto;
+    height: 60px;
+    object-fit: contain;
+}
+
+.main-loader-container h3{
+    margin: 0;
+    font-size: 15px;
+    color: var(--primary-color);
+}

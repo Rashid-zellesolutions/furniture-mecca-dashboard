@@ -1,0 +1,414 @@
+/* .Page {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 84%;
+  left: 260px;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+} */
+
+.Page {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%; /* Make content width responsive */
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.DashboardPage {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.dashboard-card1 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.dashboard-card2 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+  
+.dashboard-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #C61B1A;
+}
+
+.dashboard-card1 h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.dashboard-card2 h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #71ee52;
+}
+  
+.dashboard-card p {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+  line-height: 26px;
+}
+
+.dashboard-card1 p {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+  line-height: 26px;
+}
+ 
+.dashboard-card2 p {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+  line-height: 26px;
+}
+
+.AddBtn {
+  width: 136px;
+  height: 34px;
+  gap: 10px;
+  padding: 5px 10px 5px 10px;
+  /* line-height: 18px; */
+  line-height: 24px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  border: none !important;
+  border-radius: 4px !important;
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  background-color: var(--primary-color);
+  font-size: var(--font-size-small);
+}
+
+/* Keyframes for move-in-right animation */
+@keyframes moveInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0; /* Start fully transparent */
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1; /* Fully opaque */
+  }
+}
+
+/* Add this class to trigger the animation */
+.AddBtn.animate {
+  animation: moveInRight 300ms ease-out forwards; /* Use forwards to keep the final state */
+}
+
+
+.ImportBtn {
+  width: 95px;
+  height: 34px;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  /* line-height: 18px; */
+  line-height: 24px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color-opacity);
+  font-family: var(--font-family);
+  background-color: var(--btn-background-color);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+}
+
+.ExportBtn {
+  width: 92px;
+  height: 34px;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  /* line-height: 18px; */
+  line-height: 24px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color-opacity);
+  font-family: var(--font-family);
+  background-color: var(--btn-background-color);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+}
+
+.FilterBtn {
+  /* width: 138px; */
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px 5px 15px;
+  gap: 5px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  opacity: 0px;
+  background: #666666;
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  line-height: 18px;
+  /* text-align: left; */
+  color: #FFFFFF;
+
+}
+
+.AddCatBtn {
+  width: 105px;
+  height: 28px;
+  border: none !important;
+  border-radius: 3px !important;
+  margin-top: 40px;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  line-height: 18px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--primary-color);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  /* font-weight: var(--font-weight-regular); */
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.NavigateBtn {
+  width: 105px;
+  height: 28px;
+  border: none !important;
+  border-radius: 3px !important;
+  margin-top: 40px;
+  margin-left: 20px;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  line-height: 18px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--text-color);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.AddUserBtn {
+  width: 105px;
+  height: 28px;
+  border: none !important;
+  border-radius: 3px !important;
+  /* margin-top: 40px; */
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  line-height: 18px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--primary-color);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  /* font-weight: var(--font-weight-regular); */
+  cursor: pointer;
+}
+
+.GenPasswordBtn {
+  width: 119px;
+  height: 25px;
+  border: none !important;
+  border-radius: 3px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  background: var(--primary-color-opacity);
+  line-height: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  /* background-color: var(--primary-color); */
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-extra-small);
+  cursor: pointer;
+}
+
+.DraftBtn {
+  width: 83px;
+  height: 28px;
+  border: none !important;
+  border-radius: 2px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  background: var(--semi-background-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-small);
+  line-height: 18px;
+  color: #595959;
+  cursor: pointer;
+  /* color: var(--text-color-opacity); */  
+}
+
+.PreviewBtn {
+  width: 67px;
+  height: 28px;
+  border: none !important;
+  border-radius: 2px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  background: var(--semi-background-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-small);
+  line-height: 18px;
+  color: #595959;
+  cursor: pointer;
+  /* color: var(--text-color-opacity); */
+}
+
+.PublishBtn {
+  width: 64px;
+  height: 28px;
+  border: none !important;
+  border-radius: 2px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  background: var(--publish-btn-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-small);
+  line-height: 18px;
+  color: var(--containers-color);
+  cursor: pointer;
+}
+
+.DraftCopyBtn {
+  width: 140px;
+  height: 28px;
+  border: none !important;
+  border-radius: 2px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  background: var(--draft-copy-btn-color);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-small);
+  line-height: 18px;
+  color: var(--publish-btn-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.AddAttributeBtn {
+  width: 103px;
+  height: 35px;
+  border: none !important;
+  border-radius: 2px !important;
+  line-height: 15px;
+  padding: 9px 7px 9px 7px;
+  gap: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-semi-bold);
+  background-color: var(--attributebBtn-background);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.AddSwitchBtn {
+  width: 125px;
+  height: 35px;
+  border: none !important;
+  border-radius: 2px !important;
+  line-height: 15px;
+  padding: 9px 7px 9px 7px;
+  gap: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-semi-bold);
+  background-color: var(--attributebBtn-background);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.AddAboutBtn {
+  width: 58px;
+  height: 33px;
+  border: none !important;
+  border-radius: 3px !important;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  line-height: 22.5px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--primary-color);
+  color: var(--containers-color);
+  font-family: var(--font-family);
+  font-size: var(--font-15);
+  cursor: pointer;
+  text-transform: capitalize;
+}

@@ -1,0 +1,207 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  /* box-shadow: 0px 1px 4px 0px #00000026; */
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin-top: -15px;
+  height: 81px;
+  padding: 0;
+}
+
+.logoImage {
+  max-width: 100%;
+  height: auto;
+  margin-top: 23px;
+}
+
+.navSection {
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Hide scrollbar but allow scrolling */
+.navSection::-webkit-scrollbar {
+  display: none;
+}
+
+.navSection {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.navSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navSection li {
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  font-family: var(--font-family);
+  margin-bottom: 10px;
+}
+
+/* Pseudo-element for creating a gap */
+.navSection li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0px;
+  bottom: 0;
+  width: 10px;
+  background-color: white;
+  z-index: 1;
+}
+
+/* Pseudo-element for the blue border with rounded corners */
+.navSection li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  bottom: 0;
+  width: 8px;
+  background-color: var(--primary-color);
+  border-radius: 10px 0 0 10px;
+  z-index: 0;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+/* Show the blue border with rounded corners on hover */
+.navSection li:hover::after {
+  opacity: 1;
+}
+
+/* Show the blue border with rounded corners when the item is active */
+.navSection li.active::after {
+  opacity: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px 0 10px;
+}
+
+.navItem>span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hover effect with gap and blue border */
+.navSection li:hover,
+.navItem.active {
+  background-color: var(--primary-color-opacity);
+  box-shadow: none;
+}
+
+.catName {
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-regular);
+  line-height: 10px;
+}
+
+.navSection li:hover .catName {
+  color: var(--primary-color);
+}
+
+.catImage {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  object-fit: contain;
+}
+
+.dropdownIcon {
+  font-size: 16px;
+  transform: scale(0.8);
+  color: var(--text-color);
+  /* margin-right: 10px; */
+  margin-right: 20px;
+  transition: transform 0.7s;
+}
+
+.dropdownIcon.open {
+  transform: rotate(180deg);
+}
+
+.dropdownList {
+  list-style: none;
+  max-height: 500;
+  line-height: 10px;
+  border-radius: 5px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.navSection li.open .dropdownList {
+  max-height: 100px; /* Adjust based on expected content height */
+}
+
+.dropdownItem {
+  padding: 10px 10px 10px 50px;
+  line-height: 20px;
+  cursor: pointer;
+  font-size: var(--font-size-avg);
+  font-weight: var(--font-weight-regular);
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--text-color);
+  border: none;
+  border-radius: 0;
+}
+
+.dropdownItem:hover {
+  background: linear-gradient(to right, rgba(68, 135, 197, 1), rgba(68, 135, 197, 0.4)) !important;
+  color: white !important;
+  border: none;
+  border-radius: 0 !important;
+}
+
+/* Active state for selected child item */
+.dropdownItem.active {
+  background-color: var(--primary-color-opacity);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px;
+}
+
+/* Exclude dropdown items from showing the effect when hovered */
+.navSection .dropdownItem:hover::after {
+  opacity: 0 !important;
+}
+
+/* Exclude dropdown items from showing the effect */
+.navSection .dropdownItem.active::after {
+  opacity: 0 !important;
+}
+
+/* Ensure that the active state is not overridden by hover */
+/* .dropdownItem.active:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+} */
+
+.navSection li.active .catName {
+  color: var(--primary-color) /* Change text color */
+}

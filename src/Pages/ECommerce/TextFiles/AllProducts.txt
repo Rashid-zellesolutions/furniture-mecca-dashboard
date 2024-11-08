@@ -1,0 +1,321 @@
+import React from 'react';
+import '../Page.css';
+import CustomBtn from '../../Components/UI-Controls/Buttons/Btn';
+import SearchBar from '../../Components/UI-Controls/SearchBar/Search';
+import searchIcon from '../../Assets/Images/Search Bar 20 x 20.png'; // Replace with the actual path to your icon image
+
+const AllProducts = () => {
+
+  const handleAddProduct = () => {
+    console.log('Add product button clicked');
+  };
+
+  const handleImport = () => {
+    console.log('Import button clicked');
+  };
+
+  const handleExport = () => {
+    console.log('Export button clicked');
+  };
+
+  const handleSearch = () => {
+    console.log('Search triggered');
+    // Add your search logic here
+  };
+
+  return (
+    <div className="Page">
+      <div className="dashboard-card1">
+        <h2>Welcome to All Products...</h2>
+        <p>Here you can view and manage all your Products efficiently.</p>
+
+        <div>
+          <h1>Search Component Example</h1>
+          <SearchBar onSearch={handleSearch} icon={searchIcon} />
+        </div>
+
+        {/* Button with plus icon */}
+        <CustomBtn
+          label="Add Product"
+          withIcon={true}
+          iconType="plus"
+          className="AddBtn"
+          onClick={handleAddProduct}
+          type="submit"
+        />
+
+        {/* Button with import icon */}
+        <CustomBtn
+          label="Import"
+          withIcon={true}
+          iconType="import"
+          className="ImportBtn"
+          onClick={handleImport}
+          type="button"
+        />
+
+        {/* Button with export icon */}
+        <CustomBtn
+          label="Export"
+          withIcon={true}
+          iconType="export"
+          className="ExportBtn"
+          onClick={handleExport}
+          type="button"
+        />
+
+
+      </div>
+    </div>
+  );
+};
+
+export default AllProducts;
+
+-----------------------------------------------------------------------------------------------------------------
+26-09-2024
+
+// import React from 'react';
+// import './ECommerce.css';
+// import '../Page.css';
+// import CustomBtn from '../../Components/UI-Controls/Buttons/Btn';
+// import SearchBar from '../../Components/UI-Controls/SearchBar/Search';
+// import searchIcon from '../../Assets/Images/Search Bar 20 x 20.png';
+// import actionIcon from '../../Assets/Images/ActionBtn 30 x 30.png';
+// import {
+//   Accordion,
+//   AccordionItem,
+//   AccordionItemHeading,
+//   AccordionItemButton,
+//   AccordionItemPanel,
+// } from 'react-accessible-accordion';
+// import 'react-accessible-accordion/dist/fancy-example.css'; // Default styles
+// import { useNavigate } from 'react-router-dom';
+// import DataTable from 'react-data-table-component';
+// import { useState, useEffect } from 'react';
+
+// const AllProducts = () => {
+//   const navigate = useNavigate();
+//   const [data, setData] = useState([]);
+//   const [status, setStatus] = useState([]);
+//   const [loading, setLoading] = useState(false);
+
+//   useEffect(() => {
+//     console.log('Fetching data...');
+//     fetchTableData();
+//   }, []);
+
+//   useEffect(() => {
+//     // Set static data instead of fetching from API
+//     const staticData = [
+//       { id: 1, name: 'Leanne Graham', status: 'Published' },
+//       { id: 2, name: 'Ervin Howell', status: 'Drafted' },
+//       { id: 3, name: 'Clementine Bauch', status: 'Published' },
+//       { id: 4, name: 'Patricia Lebsack', status: 'Drafted' },
+//       // Add more products as needed
+//     ];
+//     setStatus(staticData);
+//   }, []);
+
+//   async function fetchTableData() {
+//     setLoading(true);
+//     const URL = 'https://jsonplaceholder.typicode.com/users';
+//     const response = await fetch(URL);
+//     const users = await response.json();
+//     setData(users);
+//     setLoading(false);
+//   }
+
+//   const handleAddProduct = () => {
+//     const button = document.querySelector('.AddBtn'); // Get the button
+//     button.classList.add('animate'); // Add animation class
+
+//     setTimeout(() => {
+//       navigate('/fm-dashboard/add-product');
+//     }, 500);
+//   };
+
+//   const handleImport = () => console.log('Import button clicked');
+//   const handleExport = () => console.log('Export button clicked');
+//   const handleSearch = () => console.log('Search triggered');
+
+//   const customStyles = {
+//     headCells: {
+//       style: {
+//         height: '52px',
+//         // gap: '70px',
+//         borderRadius: '5px 5px 0px 0px',
+//         background: '#FDFDFD',
+//         // boxShadow: '0px 1px 4px 0px #00000026',
+//         opacity: '1',
+//         textAlign: 'center',
+//         justifyContent: 'center',
+//         border: 'none', // Remove border from header
+//         color: 'var(--text-color)',
+//         fontFamily: 'poppins',
+//         fontWeight: '500',
+//         // lineWidth: '21px',
+//         fontSize: '14px', 
+//       },
+//     },
+//     cells: {
+//       style: {
+//         height: '66px',
+//         justifyContent: 'center',
+//         textAlign: 'center',
+//         background: '#FFFFFF',
+//         borderTop: '1px solid #F0F0F0',
+//         borderRight: 'none',
+//         color: '#858585',
+//         fontFamily: 'poppins',
+//         fontWeight: '400',
+//         // lineWidth: '18px',
+//         fontSize: '12px',
+//       },
+//     },
+//   };
+  
+
+//   const columns = [
+//     {
+//       name: (
+//         <input
+//           type="checkbox"
+//           style={{ margin: 0, }}
+//           onChange={(e) => console.log('All selected:', e.target.checked)}
+//         />
+//       ),
+//       cell: (row) => (
+//         <input
+//           type="checkbox"
+//           style={{ margin: 0, }}
+//           onChange={(e) => console.log('Selected:', row, e.target.checked)}
+//         />
+//       ),
+//       ignoreRowClick: true,
+//       allowOverflow: true,
+//       button: true,
+//     },
+//     {
+//       name: 'Image',
+//       selector: (row) => row.image,
+//     },
+//     {
+//       name: 'Name',
+//       selector: (row) => row.name,
+//     },
+//     {
+//       name: 'SKU',
+//       selector: (row) => row.address.zipcode,
+//     },
+//     {
+//       name: 'Stock',
+//       cell: (row, index) => (
+//         <div
+//           style={{
+//             color: index % 2 === 0 ? '#8DF9A1' : '#FFC750', // Alternate colors
+//           }}
+//         >
+//           {row.username} {/* Replace with the actual status data */}
+//         </div>
+//       ),
+//     },
+//     {
+//       name: 'Price',
+//       selector: (row) => row.id,
+//     },
+//     {
+//       name: 'Categories',
+//       selector: (row) => row.email,
+//     },
+//     {
+//       name: 'Status',
+//       cell: (row, index) => {
+//         const textColor = row.status === 'Published' ? '#8DF9A1' : '#FFC750'; // Determine text color
+//         const bgColor = row.status === 'Published' ? '#8DF9A11A' : '#FFC7501A'; // Determine background color
+  
+//         return (
+//           <div
+//             style={{
+//               color: textColor, // Text color
+//               backgroundColor: bgColor, // Background color
+//               padding: '5px 10px', // Optional: padding for aesthetics
+//               borderRadius: '5px', // Optional: rounded corners
+//               display: 'inline-block', // Optional: to make it fit the text
+//             }}
+//           >
+//             {row.status} {/* Display the status */}
+//           </div>
+//         );
+//       },
+//     },
+//     {
+//       name: 'Action',
+//       cell: (row) => (
+//         <img
+//           src={actionIcon}
+//           alt="Action Icon"
+//           width="30"
+//           height="30"
+//           style={{ cursor: 'pointer' }}
+//           onClick={() => console.log('Action clicked for:', row)}
+//         />
+//       ),
+//     },
+//   ];
+
+//   return (
+//     <div className="AllProductPage">
+//       <div className="sectionall_1">
+//         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+//           <SearchBar onSearch={handleSearch} icon={searchIcon} />
+//         </div>
+//         <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+//           <CustomBtn
+//             label="Add Product"
+//             withIcon={true}
+//             iconType="plus"
+//             className="AddBtn"
+//             onClick={handleAddProduct}
+//             type="submit"
+//           />
+//           <CustomBtn
+//             label="Import"
+//             withIcon={true}
+//             iconType="import"
+//             className="ImportBtn"
+//             onClick={handleImport}
+//             type="button"
+//           />
+//           <CustomBtn
+//             label="Export"
+//             withIcon={true}
+//             iconType="export"
+//             className="ExportBtn"
+//             onClick={handleExport}
+//             type="button"
+//           />
+//         </div>
+//       </div>
+
+//       <div className="sectionall_2">
+//         <Accordion allowZeroExpanded className="accordion">
+//           <AccordionItem>
+//             <AccordionItemHeading>
+//               <AccordionItemButton>Filters</AccordionItemButton>
+//             </AccordionItemHeading>
+//             <AccordionItemPanel>
+//               <p>This section can contain product details such as name, description, price, etc.</p>
+//             </AccordionItemPanel>
+//           </AccordionItem>
+//         </Accordion>
+//       </div>
+
+//       <div className="sectionall_3">
+//         <DataTable columns={columns} data={data} progressPending={loading} customStyles={customStyles} />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default AllProducts;

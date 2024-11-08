@@ -1,0 +1,80 @@
+.swatch-accordion-container {
+    width: 99%;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 10px;
+    /* border: 1px solid #ccc; */
+}
+
+.swatch-accordion-header {
+    background-color: #FDFDFD;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-large);
+    font-weight: var(--font-weight-semi-bold);
+    transition: background-color 0.3s;
+    border: 1px solid #D7D7D7;
+}
+
+.swatch-accordion-header:hover {
+    background-color: #FDFDFD;
+}
+
+.swatch-accordion-content-wrapper {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out;
+}
+
+.swatch-accordion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    background: #FFFFFF;
+    font-size: 16px;
+    border-top: 3px solid var(--main-background-color);
+}
+
+.swatch-accordion-content-wrapper.show {
+    max-height: 1000px;
+    /* Adjust this value as needed */
+}
+
+.swatch-accordion-actions {
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    width: auto;
+    height: 15px;
+    margin-right: 10px;
+    color: black;
+    object-fit: contain;
+}
+
+.swatch-accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.swatch-accordion-icon.rotate {
+    transform: rotate(360deg);
+}
+
+.edit-text {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    transition: transform 0.7s ease;
+}
+
+.edit-text.rotate {
+    transform: none;
+}

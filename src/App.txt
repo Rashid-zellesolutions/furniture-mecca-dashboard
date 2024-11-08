@@ -1,0 +1,40 @@
+04-10-2024 9:51am
+
+Login Page Implementation:-
+
+// import React from 'react';
+// import './App.css';
+// import Layout from '../src/Components/Layout/Layout.js';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Layout />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Layout from './Components/Layout/Layout.js'; // Import Layout
+import LoginForm from './Pages/Login/loginPage.js'; // Import your Login component
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Separate login route without Layout */}
+        <Route path="/" element={<LoginForm />} />
+
+        {/* All other routes wrapped inside Layout */}
+        <Route path="/*" element={<Layout />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

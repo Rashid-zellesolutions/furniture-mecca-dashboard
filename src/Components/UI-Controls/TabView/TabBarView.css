@@ -1,0 +1,38 @@
+/* TabBarView.css */
+.tab-bar-container {
+    width: 320px;
+    height: 'auto';
+    margin-top: 10px;
+  }
+  
+  .tab-bar {
+    display: flex;
+    /* border: 2px solid #ccc; */
+  }
+  
+  .tab {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #ccc;
+    font-size: var(--font-size-large);
+    font-family: var(--font-family);
+  }
+  
+  .tab:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .tab.active {
+    border-bottom: 'none';
+    font-weight: var(--font-weight-medium);
+    color: rgb(63, 62, 62);
+    font-size: var(--font-size-large);
+    font-family: var(--font-family);
+  }
+  
+  .tab-content {
+    padding: 10px 10px 0 0;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+  }
